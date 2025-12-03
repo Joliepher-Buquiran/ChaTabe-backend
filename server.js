@@ -20,8 +20,14 @@ app.use(bodyParser.json())
 app.use(express.json())
 app.use(cookieParser())
 
+
+const allowedOrigins = [
+  "http://localhost:5173",
+  "https://cha-tabe-frontend-59wa-kjxrhwbif-berts-projects-ff4737a8.vercel.app",
+];
+
 app.use(cors({
-  origin: 'http://localhost:5173', 
+  origin: allowedOrigins, 
   credentials: true            
 }));
 
