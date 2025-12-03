@@ -176,8 +176,8 @@ export const refreshAccessToken = async (req, res) => {
     // Send new access token as cookie
     res.cookie("token", newAccessToken, {
       httpOnly: true,
-      secure: false,
-      sameSite: "Lax",
+      secure: true,
+      sameSite: "None",
       maxAge: 15 * 60 * 1000, 
       path: "/",
     });
