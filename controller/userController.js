@@ -120,8 +120,8 @@ export const loginUser = async(req,res) => {
     res.cookie('token', accessToken, {
       httpOnly: true,
       // secure: process.env.NODE_ENV === 'production',
-      secure: false,
-      sameSite: 'Lax',
+      secure: true,
+      sameSite: 'None',
       maxAge: 60 * 1000,
       path: "/",
       
@@ -129,8 +129,8 @@ export const loginUser = async(req,res) => {
 
     res.cookie("refreshToken", refreshToken, {
     httpOnly: true,
-    secure: false,
-    sameSite: "Lax",
+    secure: true,
+    sameSite: "None",
     maxAge: 24 * 60 * 60 * 1000,
     path: "/", 
   }); 
