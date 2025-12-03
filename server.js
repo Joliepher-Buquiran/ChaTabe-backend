@@ -23,12 +23,18 @@ app.use(cookieParser())
 
 const allowedOrigins = [
   "http://localhost:5173",
-  "https://cha-tabe-frontend-59wa-kjxrhwbif-berts-projects-ff4737a8.vercel.app",
+  "cha-tabe-frontend-59wa.vercel.app",
 ];
 
 app.use(cors({
-  origin: allowedOrigins, 
-  credentials: true            
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error("CORS not allowed for this origin: " + origin));
+    }
+  },
+  credentials: true
 }));
 
 
